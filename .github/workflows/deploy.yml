@@ -17,6 +17,21 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Assert GitHub Secrets are Configured
+        run: |
+          if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
+            echo "::error::VERCEL_TOKEN secret is missing! Go to Settings -> Secrets and variables -> Actions and add VERCEL_TOKEN."
+            exit 1
+          fi
+          if [ -z "${{ secrets.VERCEL_ORG_ID }}" ]; then
+            echo "::error::VERCEL_ORG_ID secret is missing! Go to Settings -> Secrets and variables -> Actions and add VERCEL_ORG_ID."
+            exit 1
+          fi
+          if [ -z "${{ secrets.VERCEL_PROJECT_ID }}" ]; then
+            echo "::error::VERCEL_PROJECT_ID secret is missing! Go to Settings -> Secrets and variables -> Actions and add VERCEL_PROJECT_ID."
+            exit 1
+          fi
+
       - name: Setup Node.js (v24)
         uses: actions/setup-node@v4
         with:
