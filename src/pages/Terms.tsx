@@ -1,4 +1,13 @@
 import { LegalPage } from './legal/LegalPage';
+import type { MetaFunction } from 'react-router';
+import { getSeoMeta } from '../lib/seo';
+
+export const meta: MetaFunction = ({ location }) => {
+  return getSeoMeta('terms', [
+    { title: "Terms of Service | ADSC.Py" },
+    { name: "description", content: "Terms of Service for ADSC.Py - Atmiya Developer Students Club." },
+  ], location.pathname);
+};
 
 const termsHtml = `
 <p><strong>Last updated:</strong> January 1, 2026</p>
@@ -37,7 +46,7 @@ const termsHtml = `
 </p>
 <h2>Contact</h2>
 <p>
-  Legal requests can be sent to <a href="mailto:privacy@fimo.ai">privacy@fimo.ai</a>.
+  Legal requests can be sent to <a href="mailto:contact@atmiyadevelopers.org">contact@atmiyadevelopers.org</a>.
 </p>
 `;
 

@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { FimoProviders, FimoScripts, loadFimoMetaData, buildFimoMeta, fimoHtmlProps } from 'fimo/react-router';
 import React from 'react';
-import type { MetaFunction } from 'react-router';
+import type { MetaFunction, LinksFunction } from 'react-router';
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 
 import './index.css';
@@ -14,24 +13,34 @@ const queryClient = new QueryClient({
   },
 });
 
-// Root loader: fetches entry data for SEO meta resolution.
-// Can be extended: return { ...await loadFimoMetaData(args), customData }
-export async function loader(args: { request: Request }) {
-  return loadFimoMetaData(args);
-}
+export const meta: MetaFunction = () => {
+  return [
+    { title: "ADSC.Py — Atmiya Developer Students Club" },
+    { name: "description", content: "The Python Community at Atmiya University, Rajkot." },
+  ];
+};
 
-// Default meta for all routes. Pages can override by exporting their own `meta`.
-export const meta: MetaFunction = (args) => buildFimoMeta(args);
+export const links: LinksFunction = () => {
+  return [
+    { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }
+  ];
+};
+
+import { getOrganizationSchema } from './lib/schemaHelper';
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const orgSchema = getOrganizationSchema();
   return (
-    <html {...fimoHtmlProps()}>
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        <FimoScripts />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
       </head>
       <body>
         {children}
@@ -45,9 +54,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function AppRoot() {
   return (
     <QueryClientProvider client={queryClient}>
-      <FimoProviders>
-        <Outlet />
-      </FimoProviders>
+      <Outlet />
     </QueryClientProvider>
   );
 }

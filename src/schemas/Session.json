@@ -1,0 +1,32 @@
+{
+  "uid": "Session",
+  "name": "Practical Workshop Session",
+  "pluralName": "Practical Workshop Sessions",
+  "fields": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "tagline",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "date",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "domain",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "uid": "Domain",
+  "name": "Python Domain Roadmap",
+  "pluralName": "Python Domain Roadmaps",
+  "fields": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "shortDesc",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "tagline",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "whatItIs",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "whyPython",
+      "type": "text",
+      "required": true
+    }
+  ]
+}

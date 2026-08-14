@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/admin/seo", "destination": "/index.html" },
+    { "source": "/((?!assets/|.*\\..*).*)$", "destination": "/index.html" }
+  ]
+}

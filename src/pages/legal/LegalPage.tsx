@@ -1,4 +1,4 @@
-import { FimoLink } from 'fimo/react-router';
+import { Link } from 'react-router';
 
 interface LegalPageProps {
   title: string;
@@ -28,12 +28,12 @@ export function LegalPage({ title, lastUpdated, html }: LegalPageProps) {
         <div className="text-muted-foreground mx-auto flex w-full max-w-4xl items-center justify-between px-6 py-4 text-sm">
           <span>Legal documents</span>
           <nav className="flex items-center gap-4">
-            <FimoLink to="/privacy" className="hover:text-foreground">
+            <Link to="/privacy" className="hover:text-foreground">
               Privacy
-            </FimoLink>
-            <FimoLink to="/terms" className="hover:text-foreground">
+            </Link>
+            <Link to="/terms" className="hover:text-foreground">
               Terms
-            </FimoLink>
+            </Link>
           </nav>
         </div>
       </footer>

@@ -1,4 +1,13 @@
 import { LegalPage } from './legal/LegalPage';
+import type { MetaFunction } from 'react-router';
+import { getSeoMeta } from '../lib/seo';
+
+export const meta: MetaFunction = ({ location }) => {
+  return getSeoMeta('privacy', [
+    { title: "Privacy Policy | ADSC.Py" },
+    { name: "description", content: "Privacy Policy for ADSC.Py - Atmiya Developer Students Club." },
+  ], location.pathname);
+};
 
 const privacyHtml = `
 <p><strong>Last updated:</strong> January 1, 2026</p>
@@ -34,7 +43,7 @@ const privacyHtml = `
 <h2>Sharing and Processors</h2>
 <p>
   We may use service providers to process analytics and infrastructure data on our behalf. For this website, analytics
-  events may be processed by Fimo infrastructure providers as a data processor for the site operator.
+  events may be processed by hosting and analytics service providers as a data processor for the site operator.
 </p>
 <h2>International Transfers</h2>
 <p>
@@ -68,7 +77,7 @@ const privacyHtml = `
 </p>
 <h2>Contact</h2>
 <p>
-  Privacy requests can be sent to <a href="mailto:privacy@fimo.ai">privacy@fimo.ai</a>.
+  Privacy requests can be sent to <a href="mailto:contact@atmiyadevelopers.org">contact@atmiyadevelopers.org</a>.
 </p>
 `;
 
