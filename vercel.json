@@ -6,8 +6,14 @@
   "outputDirectory": "dist/client",
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/*": {
+      "maxDuration": 30,
+      "supportsCancellation": true
+    }
+  },
   "rewrites": [
-    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+    { "source": "/((?!api/|assets/).*)", "destination": "/index.html" }
   ],
   "headers": [
     {

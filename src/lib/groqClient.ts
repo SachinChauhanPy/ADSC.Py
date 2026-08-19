@@ -1,69 +1,45 @@
 // ─────────────────────────────────────────────────────────
-// Groq API Client — Streaming Chat Completions
-// Direct fetch to Groq's OpenAI-compatible endpoint
+// Chat client — talks to our own /api/chat proxy.
+//
+// The Groq key is NOT read here. Anything in this file ships to the
+// browser, so the key lives in api/chat.ts and never leaves the server.
+// The proxy also builds the system prompt and runs the knowledge-base
+// lookup, which is why neither appears in this file any more.
 // ─────────────────────────────────────────────────────────
 
-import { searchKnowledge, type KnowledgeChunk } from '../data/knowledgeBase';
-
-const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
-
-function getApiKey(): string {
-  const key = import.meta.env.VITE_GROQ_API_KEY;
-  if (!key) {
-    throw new Error('VITE_GROQ_API_KEY is not set. Add it to your .env file.');
-  }
-  return key;
-}
-
-function getModel(): string {
-  return import.meta.env.VITE_GROQ_MODEL || 'openai/gpt-oss-120b';
-}
+const CHAT_API_URL = '/api/chat';
 
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant';
   content: string;
 }
 
-// ── System Prompt with strict guardrails ──
-function buildSystemPrompt(contextChunks: KnowledgeChunk[]): string {
-  const contextBlock = contextChunks
-    .map(c => `[${c.category} — ${c.title}]\n${c.content}`)
-    .join('\n\n---\n\n');
+async function postChat(
+  conversationHistory: ChatMessage[],
+  userMessage: string,
+  stream: boolean,
+): Promise<Response> {
+  return fetch(CHAT_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      // The proxy re-validates and trims this; sending the tail is just polite.
+      history: conversationHistory.slice(-6),
+      message: userMessage,
+      stream,
+    }),
+  });
+}
 
-  return `You are **ADSC Bot**, the official AI assistant for **ADSC.Py** — the student-led Python developer community at Atmiya University, Rajkot.
-
-## YOUR STRICT RULES:
-1. You MUST ONLY answer questions related to the ADSC.Py community, its learning paths, sessions, projects, opportunities, maintainers, website navigation, and Python career guidance within the ADSC.Py ecosystem.
-2. If a user asks a question NOT related to ADSC.Py (e.g., general math, cooking recipes, unrelated coding help, weather, politics, personal advice), you MUST politely decline and redirect them. Example: "I'm ADSC Bot — I can only help with ADSC.Py community topics! Try asking me about our learning paths, upcoming sessions, or how to join. 🐍"
-3. NEVER fabricate information. If you don't know something, say so honestly and suggest the user check the website or contact the maintainers.
-4. NEVER promise jobs, placements, or guaranteed employment. ADSC.Py helps with career readiness, not job guarantees.
-5. NEVER invent fake member counts or fabricated testimonials.
-6. Always refer to the community as "ADSC.Py" (exact casing).
-7. When mentioning pages on the website, include the path (e.g., "Check out our Paths page at /paths").
-8. ADSC.Py does NOT have a public Telegram group. Telegram is only used internally by core team maintainers. NEVER suggest users join a Telegram group. The only public communication channels for students are **Discord** and **WhatsApp**.
-9. Do NOT invent or assume any communication channels, social media groups, or sign-up forms that are not explicitly mentioned in the knowledge base context below.
-
-## RESPONSE FORMAT — VERY IMPORTANT:
-Your responses are displayed inside a small chat widget (400px wide). You MUST follow these formatting rules strictly:
-- Keep responses SHORT and CONCISE — 3 to 6 short paragraphs maximum.
-- Use **bold** for emphasis on key terms and names.
-- Use bullet points (- item) for lists. Keep each bullet to one short sentence.
-- Use ### for section headings ONLY when listing multiple distinct categories (like different learning paths). Use sparingly — at most 1-2 per response.
-- NEVER use markdown tables (| col | col |). Tables look completely broken in the chat. Convert any tabular data into bullet lists instead.
-- NEVER use horizontal rules (---).
-- NEVER use code blocks with triple backticks.
-- Keep paragraphs to 1-2 sentences each.
-- Use emojis sparingly (1-2 per response max) for warmth.
-- When listing items with details, use this format:
-  - **Item Name** — Short one-line description.
-
-## KNOWLEDGE BASE CONTEXT:
-Use the following verified information to answer the user's question. Base your answers ONLY on this context and the conversation history.
-
-${contextBlock}
-
-## TONE:
-Be welcoming, practical, motivating, and student-friendly. Inclusive of beginners. Focused on collaboration over competition. Action-oriented and grounded.`;
+// The proxy always answers errors as { error: string }.
+async function readError(response: Response): Promise<Error> {
+  try {
+    const data = await response.json();
+    if (typeof data?.error === 'string') return new Error(data.error);
+  } catch {
+    // fall through to the generic message
+  }
+  return new Error(`Chat request failed (${response.status}).`);
 }
 
 // ── Non-streaming chat (fallback) ──
@@ -71,36 +47,10 @@ export async function chatWithGroq(
   conversationHistory: ChatMessage[],
   userMessage: string,
 ): Promise<string> {
-  const contextChunks = searchKnowledge(userMessage, 5);
-  const systemPrompt = buildSystemPrompt(contextChunks);
-
-  const messages: ChatMessage[] = [
-    { role: 'system', content: systemPrompt },
-    ...conversationHistory.slice(-6), // keep last 6 messages for context window
-    { role: 'user', content: userMessage },
-  ];
-
-  const response = await fetch(GROQ_API_URL, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${getApiKey()}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: getModel(),
-      messages,
-      temperature: 0.6,
-      max_tokens: 1024,
-      stream: false,
-    }),
-  });
+  const response = await postChat(conversationHistory, userMessage, false);
 
   if (!response.ok) {
-    const errorBody = await response.text();
-    if (response.status === 429) {
-      throw new Error('Rate limit reached. Please wait a moment and try again.');
-    }
-    throw new Error(`Groq API error (${response.status}): ${errorBody}`);
+    throw await readError(response);
   }
 
   const data = await response.json();
@@ -115,38 +65,11 @@ export async function chatWithGroqStream(
   onDone: () => void,
   onError: (error: Error) => void,
 ): Promise<void> {
-  const contextChunks = searchKnowledge(userMessage, 5);
-  const systemPrompt = buildSystemPrompt(contextChunks);
-
-  const messages: ChatMessage[] = [
-    { role: 'system', content: systemPrompt },
-    ...conversationHistory.slice(-6),
-    { role: 'user', content: userMessage },
-  ];
-
   try {
-    const response = await fetch(GROQ_API_URL, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${getApiKey()}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: getModel(),
-        messages,
-        temperature: 0.6,
-        max_tokens: 1024,
-        stream: true,
-      }),
-    });
+    const response = await postChat(conversationHistory, userMessage, true);
 
     if (!response.ok) {
-      const errorBody = await response.text();
-      if (response.status === 429) {
-        onError(new Error('Rate limit reached. Please wait a moment and try again.'));
-        return;
-      }
-      onError(new Error(`Groq API error (${response.status}): ${errorBody}`));
+      onError(await readError(response));
       return;
     }
 
