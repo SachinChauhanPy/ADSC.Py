@@ -49,32 +49,32 @@ export default function OpportunitiesPage() {
           <div className="pixel-badge bg-[#34A853] text-white inline-block">
             DEVELOPER EXPOSURE MATRIX
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-900 tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight">
             Developer Programs & Opportunities
           </h1>
-          <p className="text-base sm:text-lg text-zinc-600 font-medium leading-relaxed">
+          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-medium leading-relaxed">
             Verified global open-source mentorships, hackathons, and fellowships available for university students.
           </p>
         </div>
 
         {/* Disclaimer Notice */}
-        <div className="bg-amber-50 border-2 border-zinc-900 p-5 flex items-start gap-4">
+        <div className="bg-amber-50 dark:bg-zinc-800 border-2 border-zinc-900 dark:border-zinc-700 p-5 flex items-start gap-4">
           <Info className="w-6 h-6 text-[#EA4335] shrink-0 mt-0.5" />
-          <div className="space-y-1 text-xs text-zinc-800 leading-relaxed font-medium">
-            <strong className="font-pixel text-zinc-900 font-bold block">HONEST COMMUNITY DISCLOSURE:</strong>
+          <div className="space-y-1 text-xs text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium">
+            <strong className="font-pixel text-zinc-900 dark:text-zinc-100 font-bold block">HONEST COMMUNITY DISCLOSURE:</strong>
             ADSC.Py compiles official open source programs (GSoC, LFX, Hacktoberfest) and student hackathons. We never guarantee jobs or placement outcomes; we provide the roadmap and peer guidance so you can apply with confidence.
           </div>
         </div>
 
         {/* Search & Filters */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 border-2 border-zinc-900 bg-zinc-50/50">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 border-2 border-zinc-900 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-900/50">
           <div className="flex flex-wrap items-center gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={`pixel-btn text-xs px-3.5 py-1.5 font-bold ${
-                  selectedCategory === cat ? 'bg-zinc-900 text-white shadow-[2px_2px_0px_#34A853]' : 'bg-white text-zinc-800'
+                  selectedCategory === cat ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-[2px_2px_0px_#34A853]' : ''
                 }`}
               >
                 {cat}
@@ -86,7 +86,7 @@ export default function OpportunitiesPage() {
             placeholder="Search program, org, or skill..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-white border-2 border-zinc-900 px-3 py-1.5 text-xs font-bold font-mono focus:outline-none focus:bg-amber-50/20 shadow-[2px_2px_0px_#121212] w-full md:max-w-xs"
+            className="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border-2 border-zinc-900 dark:border-zinc-700 px-3 py-1.5 text-xs font-bold font-mono focus:outline-none focus:bg-amber-50/20 dark:focus:bg-zinc-700 shadow-[2px_2px_0px_var(--pixel-shadow-color)] w-full md:max-w-xs"
           />
         </div>
 
@@ -95,47 +95,47 @@ export default function OpportunitiesPage() {
           {filteredOpportunities.map((opp) => (
             <div
               key={opp.id}
-              className="pixel-card p-6 sm:p-8 bg-white border-2 border-zinc-900 flex flex-col justify-between space-y-6"
+              className="pixel-card p-6 sm:p-8 border-2 border-zinc-900 dark:border-zinc-700 flex flex-col justify-between space-y-6"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-pixel text-xs px-2.5 py-1 bg-zinc-900 text-white border border-zinc-900">
+                  <span className="font-pixel text-xs px-2.5 py-1 bg-zinc-900 dark:bg-zinc-800 text-white border border-zinc-900 dark:border-zinc-600">
                     {opp.category}
                   </span>
                   {opp.featuredBadge && (
-                    <span className="px-2 py-0.5 text-[10px] font-pixel font-bold bg-[#FFD43B] text-zinc-900 border border-zinc-900">
+                    <span className="px-2 py-0.5 text-[10px] font-pixel font-bold bg-[#FFD43B] text-zinc-900 border border-zinc-900 dark:border-zinc-600">
                       {opp.featuredBadge}
                     </span>
                   )}
                 </div>
 
                 <div className="space-y-1">
-                  <h3 className="text-xl font-extrabold text-zinc-900 hover:text-[#34A853] transition-colors">
+                  <h3 className="text-xl font-extrabold text-zinc-900 dark:text-zinc-100 hover:text-[#34A853] dark:hover:text-[#5ed87f] transition-colors">
                     <Link to={`/opportunities/${opp.id}`}>
                       {opp.title}
                     </Link>
                   </h3>
-                  <p className="text-xs font-mono font-bold text-zinc-500">
+                  <p className="text-xs font-mono font-bold text-zinc-500 dark:text-zinc-400">
                     {opp.organization}
                   </p>
                 </div>
 
-                <p className="text-xs text-zinc-700 leading-relaxed">
+                <p className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
                   {opp.description}
                 </p>
 
                 {/* Eligibility */}
-                <div className="bg-zinc-50 p-3 border border-zinc-900 space-y-1 text-xs">
-                  <span className="font-pixel text-[10px] text-zinc-500 uppercase font-bold">ELIGIBILITY:</span>
-                  <p className="font-medium text-zinc-800">{opp.eligibility}</p>
+                <div className="bg-zinc-50 dark:bg-zinc-800 p-3 border border-zinc-900 dark:border-zinc-700 space-y-1 text-xs">
+                  <span className="font-pixel text-[10px] text-zinc-500 dark:text-zinc-400 uppercase font-bold">ELIGIBILITY:</span>
+                  <p className="font-medium text-zinc-800 dark:text-zinc-200">{opp.eligibility}</p>
                 </div>
 
                 {/* Relevant Skills */}
                 <div className="space-y-1.5">
-                  <span className="font-pixel text-[10px] text-zinc-500 uppercase">RELEVANT SKILLS:</span>
+                  <span className="font-pixel text-[10px] text-zinc-500 dark:text-zinc-400 uppercase">RELEVANT SKILLS:</span>
                   <div className="flex flex-wrap gap-1.5">
                     {opp.relevantSkills.map((s) => (
-                      <span key={s} className="px-2 py-0.5 bg-white border border-zinc-900 text-[10px] font-mono font-bold text-zinc-800">
+                      <span key={s} className="px-2 py-0.5 bg-white dark:bg-zinc-800 border border-zinc-900 dark:border-zinc-700 text-[10px] font-mono font-bold text-zinc-800 dark:text-zinc-200">
                         {s}
                       </span>
                     ))}
@@ -143,10 +143,10 @@ export default function OpportunitiesPage() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t-2 border-zinc-100 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-zinc-600">
+              <div className="pt-4 border-t-2 border-zinc-100 dark:border-zinc-700 space-y-3">
+                <div className="flex items-center justify-between text-xs font-mono text-zinc-600 dark:text-zinc-400">
                   <span>DEADLINE:</span>
-                  <span className="font-bold text-zinc-900">{opp.deadline}</span>
+                  <span className="font-bold text-zinc-900 dark:text-zinc-100">{opp.deadline}</span>
                 </div>
 
                 <a
@@ -165,7 +165,7 @@ export default function OpportunitiesPage() {
         </div>
 
         {filteredOpportunities.length === 0 && (
-          <div className="text-center py-12 border-2 border-dashed border-zinc-300 font-pixel text-sm text-zinc-500">
+          <div className="text-center py-12 border-2 border-dashed border-zinc-300 dark:border-zinc-700 font-pixel text-sm text-zinc-500 dark:text-zinc-400">
             No opportunities found matching your query.
           </div>
         )}

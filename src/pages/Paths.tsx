@@ -13,7 +13,7 @@ export const meta: MetaFunction = ({ location }) => {
 };
 import { Shell } from '../components/layout/Shell';
 import { getProjects } from '../lib/dataManager';
-import { Code2, Clock, Sparkles, CheckCircle2, ArrowRight, ExternalLink } from 'lucide-react';
+import { Code2, Clock, CheckCircle2 } from 'lucide-react';
 import { PixelTerminal, PixelLaptop } from '../components/stickers';
 
 export default function PathsPage() {
@@ -42,10 +42,10 @@ export default function PathsPage() {
           <div className="pixel-badge bg-[#FFD43B] text-zinc-900 inline-block">
             GUIDED PROJECT BLUEPRINTS
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-900 tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight">
             Stop Tutorial Hell: Build Real Projects
           </h1>
-          <p className="text-base sm:text-lg text-zinc-600 font-medium leading-relaxed">
+          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-medium leading-relaxed">
             The fastest way to learn Python is by building projects with clear specs, feature requirements, and real-world architectures.
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function PathsPage() {
           <button
             onClick={() => setSelectedLevel('all')}
             className={`pixel-btn text-xs px-4 py-2 font-bold ${
-              selectedLevel === 'all' ? 'bg-zinc-900 text-white shadow-[3px_3px_0px_#FFD43B]' : 'bg-white text-zinc-800'
+              selectedLevel === 'all' ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-[3px_3px_0px_#FFD43B]' : ''
             }`}
           >
             All Project Levels ({projects.length})
@@ -63,7 +63,7 @@ export default function PathsPage() {
           <button
             onClick={() => setSelectedLevel(1)}
             className={`pixel-btn text-xs px-4 py-2 font-bold ${
-              selectedLevel === 1 ? 'bg-[#4285F4] text-white shadow-[3px_3px_0px_#121212]' : 'bg-white text-zinc-800'
+              selectedLevel === 1 ? 'bg-[#4285F4] text-white shadow-[3px_3px_0px_var(--pixel-shadow-color)]' : ''
             }`}
           >
             Level 1: Fundamentals
@@ -71,7 +71,7 @@ export default function PathsPage() {
           <button
             onClick={() => setSelectedLevel(2)}
             className={`pixel-btn text-xs px-4 py-2 font-bold ${
-              selectedLevel === 2 ? 'bg-[#FFD43B] text-zinc-900 shadow-[3px_3px_0px_#121212]' : 'bg-white text-zinc-800'
+              selectedLevel === 2 ? 'bg-[#FFD43B] text-zinc-900 shadow-[3px_3px_0px_var(--pixel-shadow-color)]' : ''
             }`}
           >
             Level 2: Real-World Apps
@@ -79,7 +79,7 @@ export default function PathsPage() {
           <button
             onClick={() => setSelectedLevel(3)}
             className={`pixel-btn text-xs px-4 py-2 font-bold ${
-              selectedLevel === 3 ? 'bg-[#EA4335] text-white shadow-[3px_3px_0px_#121212]' : 'bg-white text-zinc-800'
+              selectedLevel === 3 ? 'bg-[#EA4335] text-white shadow-[3px_3px_0px_var(--pixel-shadow-color)]' : ''
             }`}
           >
             Level 3: Advanced Systems
@@ -91,24 +91,24 @@ export default function PathsPage() {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="pixel-card p-6 sm:p-8 bg-white border-2 border-zinc-900 flex flex-col justify-between space-y-6"
+              className="pixel-card p-6 sm:p-8 border-2 border-zinc-900 dark:border-zinc-700 flex flex-col justify-between space-y-6"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-pixel text-xs px-2.5 py-1 bg-zinc-900 text-white border border-zinc-900">
+                  <span className="font-pixel text-xs px-2.5 py-1 bg-zinc-900 dark:bg-zinc-800 text-white border border-zinc-900 dark:border-zinc-600">
                     {project.level}
                   </span>
-                  <span className="flex items-center gap-1 text-xs font-mono text-zinc-600">
+                  <span className="flex items-center gap-1 text-xs font-mono text-zinc-600 dark:text-zinc-400">
                     <Clock className="w-3.5 h-3.5" />
                     {project.estimatedHours}
                   </span>
                 </div>
 
                 <div className="space-y-1">
-                  <span className="text-xs font-pixel text-[#4285F4] uppercase font-bold">
+                  <span className="text-xs font-pixel text-[#4285F4] dark:text-[#7aafff] uppercase font-bold">
                     {project.domain}
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-zinc-900 hover:text-[#4285F4] transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-zinc-900 dark:text-zinc-100 hover:text-[#4285F4] dark:hover:text-[#7aafff] transition-colors">
                     <Link to={`/paths/${project.id}`}>
                       {project.title}
                     </Link>
@@ -116,19 +116,19 @@ export default function PathsPage() {
                 </div>
 
                 {/* Problem Solved */}
-                <div className="bg-amber-50/60 p-3.5 border-2 border-zinc-900 space-y-1">
-                  <span className="font-pixel text-[10px] text-zinc-600 uppercase font-bold">PROBLEM SOLVED:</span>
-                  <p className="text-xs text-zinc-800 leading-relaxed font-medium">
+                <div className="bg-amber-50/60 dark:bg-zinc-800/80 p-3.5 border-2 border-zinc-900 dark:border-zinc-700 space-y-1">
+                  <span className="font-pixel text-[10px] text-zinc-600 dark:text-zinc-400 uppercase font-bold">PROBLEM SOLVED:</span>
+                  <p className="text-xs text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium">
                     {project.problemSolved}
                   </p>
                 </div>
 
                 {/* Key Features */}
                 <div className="space-y-2">
-                  <h5 className="font-pixel text-[10px] text-zinc-500 uppercase">KEY FEATURE CHECKLIST:</h5>
+                  <h5 className="font-pixel text-[10px] text-zinc-500 dark:text-zinc-400 uppercase">KEY FEATURE CHECKLIST:</h5>
                   <ul className="space-y-1.5">
                     {project.keyFeatures.map((feat) => (
-                      <li key={feat} className="flex items-center gap-2 text-xs font-semibold text-zinc-800">
+                      <li key={feat} className="flex items-center gap-2 text-xs font-semibold text-zinc-800 dark:text-zinc-200">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#34A853] shrink-0" />
                         <span>{feat}</span>
                       </li>
@@ -138,10 +138,10 @@ export default function PathsPage() {
 
                 {/* Tech Stack Badges */}
                 <div className="space-y-2">
-                  <h5 className="font-pixel text-[10px] text-zinc-500 uppercase">TECH STACK:</h5>
+                  <h5 className="font-pixel text-[10px] text-zinc-500 dark:text-zinc-400 uppercase">TECH STACK:</h5>
                   <div className="flex flex-wrap gap-1.5">
                     {project.techStack.map((tech) => (
-                      <span key={tech} className="px-2 py-0.5 bg-zinc-100 border border-zinc-900 text-xs font-mono font-bold text-zinc-900">
+                      <span key={tech} className="px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 border border-zinc-900 dark:border-zinc-700 text-xs font-mono font-bold text-zinc-900 dark:text-zinc-200">
                         {tech}
                       </span>
                     ))}
@@ -150,9 +150,9 @@ export default function PathsPage() {
               </div>
 
               {/* Action Button */}
-              <div className="pt-4 border-t-2 border-zinc-100 flex items-center justify-between">
-                <span className="text-xs font-pixel text-zinc-500">
-                  DIFFICULTY: <strong className="text-zinc-900">{project.difficulty.toUpperCase()}</strong>
+              <div className="pt-4 border-t-2 border-zinc-100 dark:border-zinc-700 flex items-center justify-between">
+                <span className="text-xs font-pixel text-zinc-500 dark:text-zinc-400">
+                  DIFFICULTY: <strong className="text-zinc-900 dark:text-zinc-100">{project.difficulty.toUpperCase()}</strong>
                 </span>
 
                 <button

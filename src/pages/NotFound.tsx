@@ -459,10 +459,10 @@ export default function NotFoundPage() {
           <div className="pixel-badge bg-[#EA4335] text-white inline-flex items-center gap-1 font-bold">
             <span>SYS_STATUS_404</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-900 tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight leading-tight">
             IndentationError: Page Not Aligned
           </h1>
-          <p className="text-xs sm:text-sm text-zinc-500 font-semibold max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-semibold max-w-xl mx-auto">
             You got trapped in Tutorial Hell! Smash the pixelated 404 blocks with the Python ball to resolve the route.
           </p>
         </div>
@@ -471,7 +471,7 @@ export default function NotFoundPage() {
         <div className="max-w-3xl mx-auto space-y-4">
           
           {/* Status Parameters Bar */}
-          <div className="pixel-card-static p-4 bg-zinc-950 text-white flex items-center justify-between font-mono text-xs border-2 border-zinc-900 shadow-[4px_4px_0px_#121212] select-none">
+          <div className="pixel-card-static p-4 bg-zinc-950 text-white flex items-center justify-between font-mono text-xs border-2 border-zinc-900 dark:border-zinc-700 shadow-[4px_4px_0px_var(--pixel-shadow-color)] select-none">
             <div className="flex items-center gap-6">
               <span>SCORE: <strong className="text-[#FFD43B] font-bold">{score}</strong></span>
               <span>LIVES: <strong className="text-[#EA4335] font-bold">{"❤️".repeat(lives)}</strong></span>
@@ -496,7 +496,7 @@ export default function NotFoundPage() {
           {/* Canvas Wrapper */}
           <div 
             onClick={launchBall}
-            className="relative border-4 border-zinc-950 shadow-[8px_8px_0px_#121212] bg-zinc-900 overflow-hidden cursor-ew-resize rounded"
+            className="relative border-4 border-zinc-950 shadow-[8px_8px_0px_var(--pixel-shadow-color)] bg-zinc-900 overflow-hidden cursor-ew-resize rounded"
           >
             <canvas
               ref={canvasRef}
@@ -549,61 +549,61 @@ export default function NotFoundPage() {
           </div>
 
           {/* Quick instructions */}
-          <div className="flex items-center gap-2 text-[11px] text-zinc-500 font-mono justify-center">
+          <div className="flex items-center gap-2 text-[11px] text-zinc-500 dark:text-zinc-400 font-mono justify-center">
             <HelpCircle className="w-3.5 h-3.5 text-blue-500" />
             <span>Use Left/Right keyboard arrows, touch/swipe or hover cursor to control paddle.</span>
           </div>
 
         </div>
 
-        {/* Resolved fallbacks directory links (9. Internal Link Web) */}
-        <div className="pt-8 border-t-2 border-zinc-100 space-y-4 text-left">
-          <h3 className="font-pixel text-xs text-zinc-900 font-bold uppercase tracking-wider">
+        {/* Resolved fallbacks directory links */}
+        <div className="pt-8 border-t-2 border-zinc-100 dark:border-zinc-700 space-y-4 text-left">
+          <h3 className="font-pixel text-xs text-zinc-900 dark:text-zinc-100 font-bold uppercase tracking-wider">
             RESOLVED DIRECTORY FALLBACKS:
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             <Link 
               to="/journey" 
-              className="pixel-card-static p-4 bg-white border-2 border-zinc-900 hover:bg-zinc-50 transition-colors flex flex-col justify-between space-y-3 shadow-[2px_2px_0px_#121212]"
+              className="pixel-card-static p-4 border-2 border-zinc-900 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors flex flex-col justify-between space-y-3"
             >
               <div className="space-y-1">
-                <span className="font-pixel text-[9px] text-[#4285F4] font-bold">ROUTE_01</span>
-                <h4 className="font-extrabold text-sm text-zinc-800">Python Journey Map</h4>
+                <span className="font-pixel text-[9px] text-[#4285F4] dark:text-[#7aafff] font-bold">ROUTE_01</span>
+                <h4 className="font-extrabold text-sm text-zinc-800 dark:text-zinc-100">Python Journey Map</h4>
               </div>
-              <p className="text-[11px] text-zinc-500 leading-relaxed font-sans font-medium">Explore specific career domains and tool roadmaps.</p>
+              <p className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed font-sans font-medium">Explore specific career domains and tool roadmaps.</p>
             </Link>
 
             <Link 
               to="/paths" 
-              className="pixel-card-static p-4 bg-white border-2 border-zinc-900 hover:bg-zinc-50 transition-colors flex flex-col justify-between space-y-3 shadow-[2px_2px_0px_#121212]"
+              className="pixel-card-static p-4 border-2 border-zinc-900 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors flex flex-col justify-between space-y-3"
             >
               <div className="space-y-1">
-                <span className="font-pixel text-[9px] text-[#34A853] font-bold">ROUTE_02</span>
-                <h4 className="font-extrabold text-sm text-zinc-800">Project Blueprints</h4>
+                <span className="font-pixel text-[9px] text-[#34A853] dark:text-[#5ed87f] font-bold">ROUTE_02</span>
+                <h4 className="font-extrabold text-sm text-zinc-800 dark:text-zinc-100">Project Blueprints</h4>
               </div>
-              <p className="text-[11px] text-zinc-500 leading-relaxed font-sans font-medium">Step-by-step checklists to escape tutorial hell.</p>
+              <p className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed font-sans font-medium">Step-by-step checklists to escape tutorial hell.</p>
             </Link>
 
             <Link 
               to="/sessions" 
-              className="pixel-card-static p-4 bg-white border-2 border-zinc-900 hover:bg-zinc-50 transition-colors flex flex-col justify-between space-y-3 shadow-[2px_2px_0px_#121212]"
+              className="pixel-card-static p-4 border-2 border-zinc-900 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors flex flex-col justify-between space-y-3"
             >
               <div className="space-y-1">
-                <span className="font-pixel text-[9px] text-[#EA4335] font-bold">ROUTE_03</span>
-                <h4 className="font-extrabold text-sm text-zinc-800">Workshops & Slides</h4>
+                <span className="font-pixel text-[9px] text-[#EA4335] dark:text-[#ff786e] font-bold">ROUTE_03</span>
+                <h4 className="font-extrabold text-sm text-zinc-800 dark:text-zinc-100">Workshops & Slides</h4>
               </div>
-              <p className="text-[11px] text-zinc-500 leading-relaxed font-sans font-medium">Slides and code repos from live mentor lessons.</p>
+              <p className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed font-sans font-medium">Slides and code repos from live mentor lessons.</p>
             </Link>
 
             <Link 
               to="/community" 
-              className="pixel-card-static p-4 bg-white border-2 border-zinc-900 hover:bg-zinc-50 transition-colors flex flex-col justify-between space-y-3 shadow-[2px_2px_0px_#121212]"
+              className="pixel-card-static p-4 border-2 border-zinc-900 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors flex flex-col justify-between space-y-3"
             >
               <div className="space-y-1">
-                <span className="font-pixel text-[9px] text-[#FBBC04] font-bold">ROUTE_04</span>
-                <h4 className="font-extrabold text-sm text-zinc-800">Core Maintainers</h4>
+                <span className="font-pixel text-[9px] text-[#FBBC04] dark:text-[#ffd666] font-bold">ROUTE_04</span>
+                <h4 className="font-extrabold text-sm text-zinc-800 dark:text-zinc-100">Core Maintainers</h4>
               </div>
-              <p className="text-[11px] text-zinc-500 leading-relaxed font-sans font-medium">Connect with student programmers leading the club.</p>
+              <p className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed font-sans font-medium">Connect with student programmers leading the club.</p>
             </Link>
           </div>
         </div>
@@ -612,7 +612,7 @@ export default function NotFoundPage() {
         <div className="pt-2 flex items-center justify-center gap-3">
           <Link 
             to="/" 
-            className="pixel-btn text-xs px-5 py-2.5 flex items-center gap-1.5 font-bold bg-white text-zinc-800 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212]"
+            className="pixel-btn text-xs px-5 py-2.5 flex items-center gap-1.5 font-bold"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Force Exit to Home</span>

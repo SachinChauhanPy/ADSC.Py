@@ -9,7 +9,7 @@ export function Footer() {
   const baseName = endsWithPy ? clubName.slice(0, -3) : clubName;
 
   return (
-    <footer className="bg-zinc-900 text-white border-t-4 border-zinc-900 mt-20 relative overflow-hidden">
+    <footer className="bg-zinc-900 dark:bg-zinc-950 text-white border-t-4 border-zinc-900 dark:border-zinc-800 mt-20 relative overflow-hidden transition-colors duration-300">
       {/* Google Color Accent Bar */}
       <div className="h-2 w-full grid grid-cols-4">
         <div className="bg-[#EA4335]" />
@@ -38,7 +38,7 @@ export function Footer() {
             <p className="text-zinc-400 text-sm leading-relaxed font-sans">
               {settings.clubSlogan || 'The Python Community at Atmiya University, Rajkot. Helping students go from basic syntax to real-world software engineering, open source, and developer exposure.'}
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-800 border border-zinc-700 text-xs font-mono text-zinc-300">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-800 dark:bg-zinc-900 border border-zinc-700 text-xs font-mono text-zinc-300">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
               <span>Atmiya University • Rajkot, Gujarat</span>
             </div>
@@ -112,7 +112,7 @@ export function Footer() {
             <h4 className="font-pixel text-xs text-[#EA4335] uppercase tracking-wider">
               Community Disclaimer
             </h4>
-            <p className="text-zinc-400 text-xs leading-relaxed font-sans bg-zinc-800/80 p-3 border border-zinc-700">
+            <p className="text-zinc-400 text-xs leading-relaxed font-sans bg-zinc-800/80 dark:bg-zinc-900/80 p-3 border border-zinc-700">
               ADSC.Py is a student-led developer community operating under Atmiya Developer Students Club (ADSC) at Atmiya University. We do not promise job placements or guaranteed employment; we provide real-world project roadmaps, peer mentorship, and developer exposure.
             </p>
           </div>

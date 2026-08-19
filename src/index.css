@@ -5,6 +5,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ═══════════════════════════════════════
+   LIGHT MODE TOKENS
+   ═══════════════════════════════════════ */
 :root {
   font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   line-height: 1.5;
@@ -33,10 +36,47 @@
   --python-yellow: #FFD43B;
   
   /* Pixel Border & Hard Shadow */
-  --pixel-border: 2px solid #121212;
-  --pixel-shadow: 4px 4px 0px #121212;
-  --pixel-shadow-lg: 6px 6px 0px #121212;
-  --pixel-shadow-sm: 2px 2px 0px #121212;
+  --pixel-border-color: #121212;
+  --pixel-shadow-color: #121212;
+  --pixel-border: 2px solid var(--pixel-border-color);
+  --pixel-shadow: 4px 4px 0px var(--pixel-shadow-color);
+  --pixel-shadow-lg: 6px 6px 0px var(--pixel-shadow-color);
+  --pixel-shadow-sm: 2px 2px 0px var(--pixel-shadow-color);
+
+  /* Semantic Page Colors */
+  --page-bg: #ffffff;
+  --page-text: #121212;
+  --card-bg: #ffffff;
+  --muted-bg: #fafafa;
+  --subtle-bg: #f4f4f5;
+  --border-primary: #121212;
+  --border-subtle: #e4e4e7;
+  --text-secondary: #3f3f46;
+  --text-muted: #71717a;
+}
+
+/* ═══════════════════════════════════════
+   DARK MODE TOKENS
+   ═══════════════════════════════════════ */
+.dark {
+  color-scheme: dark;
+  --background: #0a0a0b;
+  --foreground: #f4f4f5;
+  --card: #18181b;
+  --card-foreground: #f4f4f5;
+
+  --pixel-border-color: #3f3f46;
+  --pixel-shadow-color: #27272a;
+
+  --page-bg: #0a0a0b;
+  --page-text: #f4f4f5;
+  --card-bg: #18181b;
+  --muted-bg: #18181b;
+  --subtle-bg: #27272a;
+  --border-primary: #3f3f46;
+  --border-subtle: #27272a;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
 }
 
 @theme inline {
@@ -57,7 +97,7 @@
 
 @layer base {
   * {
-    border-color: #121212;
+    border-color: var(--pixel-border-color);
   }
 
   html {
@@ -66,13 +106,16 @@
   }
 
   body {
-    background-color: #ffffff;
-    color: #121212;
+    background-color: var(--page-bg);
+    color: var(--page-text);
     min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 
-/* Custom Pixel Utilities */
+/* ═══════════════════════════════════════
+   CUSTOM FONT UTILITIES
+   ═══════════════════════════════════════ */
 .font-pixel {
   font-family: 'Silkscreen', cursive, monospace;
 }
@@ -85,98 +128,109 @@
   font-family: 'Space Mono', monospace;
 }
 
-/* Pixel Card & Button Hard Shadows */
+/* ═══════════════════════════════════════
+   PIXEL CARD & BUTTON — with dark mode
+   ═══════════════════════════════════════ */
 .pixel-card {
-  background-color: #ffffff;
-  border: 2px solid #121212;
-  box-shadow: 4px 4px 0px 0px #121212;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background-color: var(--card-bg);
+  border: 2px solid var(--pixel-border-color);
+  box-shadow: 4px 4px 0px 0px var(--pixel-shadow-color);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.3s ease;
 }
 
 @media (hover: hover) {
   .pixel-card:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px 0px #121212;
+    box-shadow: 6px 6px 0px 0px var(--pixel-shadow-color);
   }
 }
 
 .pixel-card-static {
-  background-color: #ffffff;
-  border: 2px solid #121212;
-  box-shadow: 4px 4px 0px 0px #121212;
+  background-color: var(--card-bg);
+  border: 2px solid var(--pixel-border-color);
+  box-shadow: 4px 4px 0px 0px var(--pixel-shadow-color);
+  transition: background-color 0.3s ease;
 }
 
 .pixel-btn {
-  background-color: #ffffff;
-  border: 2px solid #121212;
-  box-shadow: 3px 3px 0px 0px #121212;
+  background-color: var(--card-bg);
+  border: 2px solid var(--pixel-border-color);
+  box-shadow: 3px 3px 0px 0px var(--pixel-shadow-color);
   font-weight: 700;
   transition: all 0.1s ease;
+  color: var(--page-text);
 }
 
 @media (hover: hover) {
   .pixel-btn:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px 0px #121212;
+    box-shadow: 5px 5px 0px 0px var(--pixel-shadow-color);
   }
 }
 
 .pixel-btn:active {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px 0px #121212;
+  box-shadow: 1px 1px 0px 0px var(--pixel-shadow-color);
 }
 
 /* Color Variant Pixel Buttons */
 .pixel-btn-primary {
   background-color: #4285F4;
   color: #ffffff;
-  border: 2px solid #121212;
-  box-shadow: 3px 3px 0px 0px #121212;
+  border: 2px solid var(--pixel-border-color);
+  box-shadow: 3px 3px 0px 0px var(--pixel-shadow-color);
 }
 
 @media (hover: hover) {
   .pixel-btn-primary:hover {
     background-color: #3367D6;
     transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px 0px #121212;
+    box-shadow: 5px 5px 0px 0px var(--pixel-shadow-color);
   }
 }
 
 .pixel-btn-python {
   background-color: #FFD43B;
   color: #121212;
-  border: 2px solid #121212;
-  box-shadow: 3px 3px 0px 0px #121212;
+  border: 2px solid var(--pixel-border-color);
+  box-shadow: 3px 3px 0px 0px var(--pixel-shadow-color);
 }
 
 @media (hover: hover) {
   .pixel-btn-python:hover {
     background-color: #F7C600;
     transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px 0px #121212;
+    box-shadow: 5px 5px 0px 0px var(--pixel-shadow-color);
   }
 }
 
 .pixel-btn-green {
   background-color: #34A853;
   color: #ffffff;
-  border: 2px solid #121212;
-  box-shadow: 3px 3px 0px 0px #121212;
+  border: 2px solid var(--pixel-border-color);
+  box-shadow: 3px 3px 0px 0px var(--pixel-shadow-color);
 }
 
 @media (hover: hover) {
   .pixel-btn-green:hover {
     background-color: #2D9248;
     transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px 0px #121212;
+    box-shadow: 5px 5px 0px 0px var(--pixel-shadow-color);
   }
 }
 
-/* Background Grid Pattern */
+/* ═══════════════════════════════════════
+   BACKGROUND GRID PATTERNS — with dark mode
+   ═══════════════════════════════════════ */
 .bg-pixel-grid {
   background-size: 24px 24px;
   background-image: 
     radial-gradient(circle, #e4e4e7 1.5px, transparent 1.5px);
+}
+
+.dark .bg-pixel-grid {
+  background-image: 
+    radial-gradient(circle, #27272a 1.5px, transparent 1.5px);
 }
 
 .bg-pixel-grid-dense {
@@ -185,20 +239,29 @@
     radial-gradient(circle, #d4d4d8 1px, transparent 1px);
 }
 
-/* Pixel Badge */
+.dark .bg-pixel-grid-dense {
+  background-image: 
+    radial-gradient(circle, #27272a 1px, transparent 1px);
+}
+
+/* ═══════════════════════════════════════
+   PIXEL BADGE — with dark mode
+   ═══════════════════════════════════════ */
 .pixel-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.625rem;
-  border: 2px solid #121212;
+  border: 2px solid var(--pixel-border-color);
   font-family: 'Silkscreen', monospace;
   font-size: 0.75rem;
   font-weight: 700;
-  box-shadow: 2px 2px 0px 0px #121212;
+  box-shadow: 2px 2px 0px 0px var(--pixel-shadow-color);
 }
 
-/* Interactive Pixel Stickers */
+/* ═══════════════════════════════════════
+   INTERACTIVE PIXEL STICKERS
+   ═══════════════════════════════════════ */
 .pixel-sticker-interactive {
   transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.25s ease;
   cursor: pointer;
@@ -209,10 +272,101 @@
 @media (hover: hover) {
   .pixel-sticker-interactive:hover {
     transform: scale(1.15) rotate(6deg) translateY(-4px) !important;
-    filter: drop-shadow(4px 6px 0px #121212) !important;
+    filter: drop-shadow(4px 6px 0px var(--pixel-shadow-color)) !important;
   }
 }
 
 .pixel-sticker-interactive:active {
   transform: scale(0.95) rotate(-3deg) !important;
+}
+
+/* ═══════════════════════════════════════
+   CHAT WIDGET ANIMATIONS
+   ═══════════════════════════════════════ */
+
+/* Floating button subtle bounce */
+.chat-button-bounce {
+  animation: chatBounce 3s ease-in-out infinite;
+}
+
+@keyframes chatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@media (hover: hover) {
+  .chat-button-bounce:hover {
+    animation: none;
+  }
+}
+
+/* Chat panel slide-in */
+.chat-panel-enter {
+  animation: chatPanelIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes chatPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Message fade-in */
+.chat-message-enter {
+  animation: chatMessageIn 0.2s ease-out forwards;
+}
+
+@keyframes chatMessageIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typing dots */
+.typing-dot {
+  animation: typingPulse 1s ease-in-out infinite;
+}
+
+@keyframes typingPulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Chat scrollbar */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d4d4d8;
+  border-radius: 0;
+  border: 1px solid #a1a1aa;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #a1a1aa;
+}
+
+/* Chat scrollbar — dark mode */
+.chat-scrollbar-dark::-webkit-scrollbar-thumb {
+  background-color: #3f3f46;
+  border-color: #52525b;
+}
+
+.chat-scrollbar-dark::-webkit-scrollbar-thumb:hover {
+  background-color: #52525b;
 }

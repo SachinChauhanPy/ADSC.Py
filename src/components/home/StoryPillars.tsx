@@ -49,15 +49,15 @@ export function StoryPillars() {
   ];
 
   return (
-    <section className="py-16 border-t-2 border-zinc-900 my-12 bg-white">
+    <section className="py-16 border-t-2 border-zinc-900 dark:border-zinc-700 my-12 bg-white dark:bg-[#0a0a0b] transition-colors duration-300">
       <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
         <div className="pixel-badge bg-[#FFD43B] text-zinc-900 inline-block">
           THE THREE PILLARS OF ADSC.Py
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight">
           How ADSC.Py Guides Your Python Journey
         </h2>
-        <p className="text-zinc-600 text-base font-medium">
+        <p className="text-zinc-600 dark:text-zinc-400 text-base font-medium">
           We don't teach syntax again. We give you the map to turn your syntax knowledge into real capability.
         </p>
       </div>
@@ -66,11 +66,11 @@ export function StoryPillars() {
         {pillars.map((p, index) => (
           <div
             key={p.title}
-            className="pixel-card p-8 flex flex-col justify-between relative bg-white border-2 border-zinc-900 space-y-6"
+            className="pixel-card p-8 flex flex-col justify-between relative border-2 border-zinc-900 dark:border-zinc-700 space-y-6"
           >
             {/* Step Number & Sticker */}
             <div className="flex items-center justify-between">
-              <span className={`font-pixel text-xs px-3 py-1 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] ${p.badgeBg}`}>
+              <span className={`font-pixel text-xs px-3 py-1 border-2 border-zinc-900 dark:border-zinc-600 shadow-[2px_2px_0px_var(--pixel-shadow-color)] ${p.badgeBg}`}>
                 STEP {p.step} • {p.title}
               </span>
               {p.icon}
@@ -78,18 +78,18 @@ export function StoryPillars() {
 
             {/* Content */}
             <div className="space-y-3">
-              <h3 className="text-xl font-extrabold text-zinc-900">
+              <h3 className="text-xl font-extrabold text-zinc-900 dark:text-zinc-100">
                 {p.subtitle}
               </h3>
-              <p className="text-zinc-600 text-sm leading-relaxed">
+              <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
                 {p.description}
               </p>
             </div>
 
             {/* Bullet points */}
-            <ul className="space-y-2.5 pt-4 border-t-2 border-zinc-100">
+            <ul className="space-y-2.5 pt-4 border-t-2 border-zinc-100 dark:border-zinc-700">
               {p.bulletPoints.map((point) => (
-                <li key={point} className="flex items-center gap-2 text-xs font-semibold text-zinc-800">
+                <li key={point} className="flex items-center gap-2 text-xs font-semibold text-zinc-800 dark:text-zinc-200">
                   <CheckCircle2 className="w-4 h-4 text-[#34A853] shrink-0" />
                   <span>{point}</span>
                 </li>
@@ -101,7 +101,7 @@ export function StoryPillars() {
 
       {/* Story Flow Indicator */}
       <div className="mt-12 text-center">
-        <div className="inline-flex items-center gap-3 px-6 py-3 bg-zinc-900 text-white border-2 border-zinc-900 shadow-[4px_4px_0px_#FFD43B] font-pixel text-xs font-bold">
+        <div className="inline-flex items-center gap-3 px-6 py-3 bg-zinc-900 dark:bg-zinc-800 text-white border-2 border-zinc-900 dark:border-zinc-700 shadow-[4px_4px_0px_#FFD43B] font-pixel text-xs font-bold">
           <span>UNDERSTAND</span>
           <ArrowRight className="w-4 h-4 text-[#FFD43B]" />
           <span>PREPARE</span>
