@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { MetaFunction } from 'react-router';
-import { Link, useLocation } from 'react-router';
+import { Link } from 'react-router';
 import { Shell } from '../components/layout/Shell';
 import { getSeoMeta } from '../lib/seo';
 import { Breadcrumbs } from '../components/layout/Breadcrumbs';
@@ -47,7 +47,6 @@ interface Particle {
 }
 
 export default function NotFoundPage() {
-  const location = useLocation();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // States

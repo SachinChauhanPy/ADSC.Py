@@ -6,7 +6,7 @@ import { getDomains, getProjects } from '../lib/dataManager';
 import { getSeoMeta } from '../lib/seo';
 import { Breadcrumbs } from '../components/layout/Breadcrumbs';
 import { RenderSticker } from '../components/stickers';
-import { ArrowLeft, CheckCircle2, Code2, Sparkles, Layers, ArrowRight } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Sparkles, Layers, ArrowRight } from 'lucide-react';
 
 export const meta: MetaFunction = ({ params, location }) => {
   const domain = getDomains().find(d => d.id === params.id);

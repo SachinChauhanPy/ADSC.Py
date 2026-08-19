@@ -7,7 +7,7 @@ import { getSeoMeta } from '../lib/seo';
 import { getEventSchema } from '../lib/schemaHelper';
 import { Breadcrumbs } from '../components/layout/Breadcrumbs';
 import { PixelTerminal } from '../components/stickers';
-import { Calendar, User, ArrowLeft, Github, FileText, Play } from 'lucide-react';
+import { User, ArrowLeft, Github, FileText, Play } from 'lucide-react';
 
 export const meta: MetaFunction = ({ params, location }) => {
   const session = getSessions().find(s => s.id === params.id);

@@ -102,7 +102,7 @@ export function getSeoHistory(): HistoryLog[] {
   try {
     const saved = localStorage.getItem("seo_history_logs");
     return saved ? JSON.parse(saved) : [];
-  } catch (e) {
+  } catch {
     return [];
   }
 }

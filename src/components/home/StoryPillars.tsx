@@ -63,7 +63,7 @@ export function StoryPillars() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-        {pillars.map((p, index) => (
+        {pillars.map((p) => (
           <div
             key={p.title}
             className="pixel-card p-8 flex flex-col justify-between relative border-2 border-zinc-900 dark:border-zinc-700 space-y-6"

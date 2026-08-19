@@ -47,7 +47,6 @@ import {
   Plus,
   Edit2,
   X,
-  FileText,
   Users,
   Compass,
   Trophy,
@@ -55,9 +54,6 @@ import {
   Lock,
   Download,
   Info,
-  MapPin,
-  Mail,
-  Code
 } from 'lucide-react';
 import { type Session } from '../data/sessions';
 import { type Opportunity } from '../data/opportunities';
@@ -1242,7 +1238,7 @@ export default function SeoDashboard() {
                         value={editingSession.resources?.githubRepo || ''} 
                         onChange={e => setEditingSession({
                           ...editingSession, 
-                          resources: { ...(editingSession.resources || {}), githubRepo: e.target.value }
+                          resources: { ...editingSession.resources, githubRepo: e.target.value }
                         })} 
                         className="w-full text-xs font-mono px-3 py-2 border border-zinc-300 focus:outline-none" 
                       />
@@ -1254,7 +1250,7 @@ export default function SeoDashboard() {
                         value={editingSession.resources?.slidesUrl || ''} 
                         onChange={e => setEditingSession({
                           ...editingSession, 
-                          resources: { ...(editingSession.resources || {}), slidesUrl: e.target.value }
+                          resources: { ...editingSession.resources, slidesUrl: e.target.value }
                         })} 
                         className="w-full text-xs font-mono px-3 py-2 border border-zinc-300 focus:outline-none" 
                       />
@@ -1266,7 +1262,7 @@ export default function SeoDashboard() {
                         value={editingSession.resources?.recordingUrl || ''} 
                         onChange={e => setEditingSession({
                           ...editingSession, 
-                          resources: { ...(editingSession.resources || {}), recordingUrl: e.target.value }
+                          resources: { ...editingSession.resources, recordingUrl: e.target.value }
                         })} 
                         className="w-full text-xs font-mono px-3 py-2 border border-zinc-300 focus:outline-none" 
                       />

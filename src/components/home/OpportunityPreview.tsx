@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { getOpportunities } from '../../lib/dataManager';
-import { PixelTrophy, PixelGitBranch } from '../stickers';
 import { ArrowRight, ExternalLink, ShieldCheck } from 'lucide-react';
 
 export function OpportunityPreview() {

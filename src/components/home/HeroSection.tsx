@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router';
-import { PixelPython, PixelTerminal, PixelCompass, PixelBrowser, PixelAIBrain } from '../stickers';
+import { PixelTerminal, PixelCompass, PixelAIBrain } from '../stickers';
 import { ArrowRight, Sparkles, Code2, ChevronRight } from 'lucide-react';
 import { getGeneralSettings } from '../../lib/dataManager';
 
