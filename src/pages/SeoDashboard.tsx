@@ -781,7 +781,7 @@ export default function SeoDashboard() {
             Logout admin
           </button>
 
-          <h1 className="text-4xl font-extrabold text-zinc-900 tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-zinc-900 tracking-tight leading-tight">
             SEO & Content Management Panel
           </h1>
           <p className="text-zinc-600 font-mono text-sm max-w-xl mx-auto">
@@ -791,7 +791,7 @@ export default function SeoDashboard() {
 
         {/* Dynamic Notification Toast */}
         {notif && (
-          <div className={`fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 border-2 border-zinc-900 shadow-[3px_3px_0px_#121212] font-pixel text-xs ${
+          <div className={`fixed bottom-4 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-6 z-50 flex items-center gap-2 px-4 py-3 border-2 border-zinc-900 shadow-[3px_3px_0px_#121212] font-pixel text-xs ${
             notif.type === 'success' ? 'bg-emerald-100 text-emerald-900 border-emerald-900' :
             notif.type === 'info' ? 'bg-blue-100 text-blue-900 border-blue-900' : 'bg-red-100 text-red-900 border-red-900'
           }`}>
@@ -803,10 +803,10 @@ export default function SeoDashboard() {
         )}
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap gap-2 border-b-2 border-zinc-900 pb-3 font-pixel text-xs">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 border-b-2 border-zinc-900 pb-3 font-pixel text-[10px] sm:text-xs">
           <button
             onClick={() => { setActiveTab('seo'); }}
-            className={`px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
+            className={`px-2.5 sm:px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
               activeTab === 'seo' ? 'bg-[#FFD43B] text-zinc-900 translate-y-[1px]' : 'bg-white text-zinc-700 hover:bg-zinc-50'
             }`}
           >
@@ -816,7 +816,7 @@ export default function SeoDashboard() {
           
           <button
             onClick={() => { setActiveTab('sessions'); }}
-            className={`px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
+            className={`px-2.5 sm:px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
               activeTab === 'sessions' ? 'bg-[#4285F4] text-white translate-y-[1px]' : 'bg-white text-zinc-700 hover:bg-zinc-50'
             }`}
           >
@@ -826,7 +826,7 @@ export default function SeoDashboard() {
 
           <button
             onClick={() => { setActiveTab('opportunities'); }}
-            className={`px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
+            className={`px-2.5 sm:px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
               activeTab === 'opportunities' ? 'bg-[#34A853] text-white translate-y-[1px]' : 'bg-white text-zinc-700 hover:bg-zinc-50'
             }`}
           >
@@ -836,7 +836,7 @@ export default function SeoDashboard() {
 
           <button
             onClick={() => { setActiveTab('projects'); }}
-            className={`px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
+            className={`px-2.5 sm:px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
               activeTab === 'projects' ? 'bg-[#EA4335] text-white translate-y-[1px]' : 'bg-white text-zinc-700 hover:bg-zinc-50'
             }`}
           >
@@ -846,7 +846,7 @@ export default function SeoDashboard() {
 
           <button
             onClick={() => { setActiveTab('domains'); }}
-            className={`px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
+            className={`px-2.5 sm:px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
               activeTab === 'domains' ? 'bg-orange-600 text-white translate-y-[1px]' : 'bg-white text-zinc-700 hover:bg-zinc-50'
             }`}
           >
@@ -856,7 +856,7 @@ export default function SeoDashboard() {
 
           <button
             onClick={() => { setActiveTab('maintainers'); }}
-            className={`px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
+            className={`px-2.5 sm:px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
               activeTab === 'maintainers' ? 'bg-zinc-900 text-white translate-y-[1px]' : 'bg-white text-zinc-700 hover:bg-zinc-50'
             }`}
           >
@@ -866,7 +866,7 @@ export default function SeoDashboard() {
 
           <button
             onClick={() => { setActiveTab('general'); }}
-            className={`px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
+            className={`px-2.5 sm:px-4 py-2 border-2 border-zinc-900 shadow-[2px_2px_0px_#121212] flex items-center gap-1.5 font-bold transition-all ${
               activeTab === 'general' ? 'bg-purple-600 text-white translate-y-[1px]' : 'bg-white text-zinc-700 hover:bg-zinc-50'
             }`}
           >

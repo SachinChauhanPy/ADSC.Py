@@ -47,6 +47,19 @@ export function ChatWidget() {
     }
   }, [isOpen]);
 
+  // Lock body scroll on mobile when chat is full-screen open
+  useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 639px)').matches;
+    if (isOpen && isMobile) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   const generateId = () => `msg_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
 
   const buildConversationHistory = (): ChatMessage[] => {

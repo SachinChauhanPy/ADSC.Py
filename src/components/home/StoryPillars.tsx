@@ -101,7 +101,7 @@ export function StoryPillars() {
 
       {/* Story Flow Indicator */}
       <div className="mt-12 text-center">
-        <div className="inline-flex items-center gap-3 px-6 py-3 bg-zinc-900 dark:bg-zinc-800 text-white border-2 border-zinc-900 dark:border-zinc-700 shadow-[4px_4px_0px_#FFD43B] font-pixel text-xs font-bold">
+        <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 bg-zinc-900 dark:bg-zinc-800 text-white border-2 border-zinc-900 dark:border-zinc-700 shadow-[4px_4px_0px_#FFD43B] font-pixel text-[10px] sm:text-xs font-bold flex-wrap justify-center">
           <span>UNDERSTAND</span>
           <ArrowRight className="w-4 h-4 text-[#FFD43B]" />
           <span>PREPARE</span>

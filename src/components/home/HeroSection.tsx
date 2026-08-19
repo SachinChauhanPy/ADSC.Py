@@ -46,8 +46,8 @@ export function HeroSection() {
       <div className="max-w-4xl mx-auto text-center space-y-8">
         
         {/* Atmiya University Badge */}
-        <div className="inline-flex items-center gap-2 bg-white dark:bg-zinc-800 border-2 border-zinc-900 dark:border-zinc-600 px-4 py-1.5 shadow-[3px_3px_0px_var(--pixel-shadow-color)] font-pixel text-xs transition-colors duration-300">
-          <span className="w-2.5 h-2.5 bg-[#EA4335] border border-zinc-900 dark:border-zinc-600" />
+        <div className="inline-flex items-center gap-2 bg-white dark:bg-zinc-800 border-2 border-zinc-900 dark:border-zinc-600 px-3 sm:px-4 py-1.5 shadow-[3px_3px_0px_var(--pixel-shadow-color)] font-pixel text-[10px] sm:text-xs transition-colors duration-300 max-w-full flex-wrap justify-center">
+          <span className="w-2.5 h-2.5 bg-[#EA4335] border border-zinc-900 dark:border-zinc-600 shrink-0" />
           <span className="font-bold text-zinc-900 dark:text-zinc-100">ATMIYA UNIVERSITY • RAJKOT</span>
           <span className="text-zinc-400 font-mono">|</span>
           <span className="text-[#306998] dark:text-[#FFD43B] font-bold">ADSC.Py</span>
@@ -130,7 +130,7 @@ export function HeroSection() {
         </div>
 
         {/* Real Status Badge */}
-        <div className="pt-6 flex items-center justify-center gap-6 text-xs text-zinc-500 dark:text-zinc-400 font-mono">
+        <div className="pt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-mono">
           <span className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             Atmiya University Chapter

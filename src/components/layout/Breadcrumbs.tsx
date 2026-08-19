@@ -28,7 +28,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
       />
       <nav 
         aria-label="Breadcrumb" 
-        className="inline-flex items-center gap-1.5 bg-zinc-50 border-2 border-zinc-900 px-3.5 py-1.5 font-mono text-[11px] font-bold text-zinc-500 shadow-[2px_2px_0px_#121212]"
+        className="inline-flex items-center gap-1.5 bg-zinc-50 border-2 border-zinc-900 px-3.5 py-1.5 font-mono text-[11px] font-bold text-zinc-500 shadow-[2px_2px_0px_#121212] max-w-full flex-wrap overflow-hidden"
       >
         <Link 
           to="/" 

@@ -471,13 +471,13 @@ export default function NotFoundPage() {
         <div className="max-w-3xl mx-auto space-y-4">
           
           {/* Status Parameters Bar */}
-          <div className="pixel-card-static p-4 bg-zinc-950 text-white flex items-center justify-between font-mono text-xs border-2 border-zinc-900 dark:border-zinc-700 shadow-[4px_4px_0px_var(--pixel-shadow-color)] select-none">
-            <div className="flex items-center gap-6">
+          <div className="pixel-card-static p-3 sm:p-4 bg-zinc-950 text-white flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] sm:text-xs border-2 border-zinc-900 dark:border-zinc-700 shadow-[4px_4px_0px_var(--pixel-shadow-color)] select-none">
+            <div className="flex items-center gap-3 sm:gap-6">
               <span>SCORE: <strong className="text-[#FFD43B] font-bold">{score}</strong></span>
               <span>LIVES: <strong className="text-[#EA4335] font-bold">{"❤️".repeat(lives)}</strong></span>
             </div>
             
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <button
                 onClick={() => setSoundEnabled(!soundEnabled)}
                 className="p-1 hover:text-white text-zinc-400"
@@ -549,7 +549,7 @@ export default function NotFoundPage() {
           </div>
 
           {/* Quick instructions */}
-          <div className="flex items-center gap-2 text-[11px] text-zinc-500 dark:text-zinc-400 font-mono justify-center">
+          <div className="flex items-center gap-2 text-[10px] sm:text-[11px] text-zinc-500 dark:text-zinc-400 font-mono justify-center text-center flex-wrap">
             <HelpCircle className="w-3.5 h-3.5 text-blue-500" />
             <span>Use Left/Right keyboard arrows, touch/swipe or hover cursor to control paddle.</span>
           </div>

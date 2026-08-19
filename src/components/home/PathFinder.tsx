@@ -62,7 +62,7 @@ export function PathFinder() {
 
         {/* Selected Domain Preview Card */}
         <div className="lg:col-span-8 pixel-card-static p-6 sm:p-8 border-2 border-zinc-900 dark:border-zinc-700 space-y-6">
-          <div className="flex items-center justify-between border-b-2 border-zinc-100 dark:border-zinc-700 pb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-zinc-100 dark:border-zinc-700 pb-4">
             <div className="flex items-center gap-4">
               <RenderSticker name={activeDomain.iconName} className="w-12 h-12" />
               <div>

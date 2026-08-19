@@ -119,11 +119,11 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-          <p>© {new Date().getFullYear()} ADSC.Py — Atmiya Developer Students Club. All rights reserved.</p>
-          <div className="flex items-center gap-4">
+          <p className="text-center sm:text-left">© {new Date().getFullYear()} ADSC.Py — Atmiya Developer Students Club. All rights reserved.</p>
+          <div className="flex items-center gap-4 flex-wrap justify-center">
             <Link to="/about" className="hover:text-zinc-300 transition">Community Manifesto</Link>
-            <span>•</span>
-            <span className="font-mono text-zinc-400">PIXEL-ART × MODERN WEB</span>
+            <span className="hidden sm:inline">•</span>
+            <span className="font-mono text-zinc-400 hidden sm:inline">PIXEL-ART × MODERN WEB</span>
           </div>
         </div>
       </div>
